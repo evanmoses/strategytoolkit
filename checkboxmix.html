@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <!-- required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <!-- get fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@200;400;700;900&display=swap" rel="stylesheet">
+  <!-- import fontawesome -->
+  <script src="https://kit.fontawesome.com/762fe8cf8c.js" crossorigin="anonymous"></script>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+  <!-- local CSS -->
+  <link rel="stylesheet" href="css/checkboxmix.css">
+  <title>Strategy Toolkit</title>
+</head>
+
+<body>
+  <header>
+    <nav class="navbar navbar-expand-md navbar-dark">
+      <a class="navbar-brand navbar-logo" href="#">
+        <img src="images/toolkit_logo.png" alt="toolkit logo">
+      </a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="#about">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link disabled" href="#">Add Tool</a>
+          </li>
+        </ul>
+      </div>
+
+    </nav>
+
+  </header>
+
+  <main>
+    <section id="search">
+      <form class="searchbar form-inline">
+        <i class="fas fa-search"></i>
+        <input type="text" class="input" data-ref="input-search" placeholder="Search by color" />
+      </form>
+    </section>
+
+
+    <section id="toolkit">
+      <div class="toolkitcontainer">
+        <div class="controlcontainer">
+          <div class="controls">
+
+            <div class="checkbox-group">
+              <h3>TASK FOCUS</h3>
+              <div class="checkbox">
+                <input type="checkbox" value=".infogather" data-category="Information Gathering" />
+                <label>Information Gathering</label>
+              </div>
+              <div class="checkbox">
+                <input type="checkbox" value=".analysis" data-category="Analysis / Synthesis" />
+                <label>Analysis / Synthesis</label>
+              </div>
+              <div class="checkbox">
+                <input type="checkbox" value=".ideation" />
+                <label>Ideation / Evaluation</label>
+              </div>
+              <div class="checkbox">
+                <input type="checkbox" value=".communication" />
+                <label>Strategic Communication</label>
+              </div>
+              <h3>DOMAIN</h3>
+              <div class="checkbox">
+                <input type="checkbox" value=".foresight" />
+                <label>Strategic Foresight</label>
+              </div>
+              <div class="checkbox">
+                <input type="checkbox" value=".business" />
+                <label>Business Strategy</label>
+              </div>
+              <div class="checkbox">
+                <input type="checkbox" value=".experience" />
+                <label>Experience Strategy</label>
+              </div>
+              <h3>PRACTICE</h3>
+              <div class="checkbox">
+                <input type="checkbox" value=".core" />
+                <label>Core Tool</label>
+              </div>
+              <div class="checkbox">
+                <input type="checkbox" value=".peripheral" />
+                <label>Peripheral Tool</label>
+              </div>
+              <div class="checkbox">
+                <input type="checkbox" value=".workshop" />
+                <label>Workshop Tool</label>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div id="Container" class="container">
+          <div class="mix toolcard infogather" type="button" data-toggle="modal" data-target="#exampleModalLong" data-content="information gathering">
+            <div class="toolcard-content">
+              <h2 class="cardtitle">CO-CREATION</h2>
+              <div class="cat-marker info-orange"></div>
+            </div>
+          </div>
+          <div class="mix toolcard analysis infogather">
+            <div class="toolcard-content">
+              <h2 class="cardtitle">ANALYSIS</h2>
+              <div class="cat-marker info-orange"></div>
+              <div class="cat-marker analysis-orange"></div>
+            </div>
+          </div>
+          <div class="mix toolcard analysis">
+            <div class="toolcard-content">
+              <h2 class="cardtitle">EMPATHY MAPPING</h2>
+              <div class="cat-marker analysis-orange"></div>
+            </div>
+          </div>
+          <div class="mix toolcard">
+            <div class="toolcard-content">
+              <h2 class="cardtitle">4</h2>
+              <div class="cat-marker info-orange"></div>
+              <div class="cat-marker info-orange"></div>
+              <div class="cat-marker info-orange"></div>
+            </div>
+          </div>
+          <div class="mix toolcard">
+            <div class="toolcard-content">
+              <h2 class="cardtitle">5</h2>
+              <div class="cat-marker info-orange"></div>
+              <div class="cat-marker info-orange"></div>
+              <div class="cat-marker info-orange"></div>
+            </div>
+          </div>
+          <div class="mix toolcard">
+            <div class="toolcard-content">
+              <h2 class="cardtitle">6</h2>
+              <div class="cat-marker info-orange"></div>
+              <div class="cat-marker info-orange"></div>
+              <div class="cat-marker info-orange"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+    </section>
+    <section id="about">
+
+    </section>
+
+    <section id="modal-container">
+      <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              ...
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+
+  </footer>
+
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+  <!-- <script src="js/scripts.js"></script> -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mixitup/3.3.1/mixitup.min.js"></script>
+  <script type="text/javascript">
+    // To keep our code clean and modular, all custom functionality will be contained inside a single object literal called "checkboxFilter".
+
+
+    // In this example, we must bind a 'change' event handler to
+    // our checkboxes, then interact with the mixer via
+    // its .filter() API methods.
+
+    var containerEl = document.querySelector('.container');
+    var checkboxGroup = document.querySelector('.checkbox-group');
+    var checkboxes = checkboxGroup.querySelectorAll('input[type="checkbox"]');
+    var inputSearch = document.querySelector('[data-ref="input-search"]');
+
+    // set variables for filtering by based on content of cards in the toolkit
+    var sortArray = document.querySelectorAll('.toolcard .cardtitle');
+    var keyupTimeout;
+
+    // create variable based on text in card, add it to
+    // current value of custom attribute 'data-content' for each card
+    // to be searched below by filterByString function
+    sortArray.forEach(function(elem) {
+      var sortText = elem.innerText || elem.innerContent;
+      var sortTextLower = sortText.toLowerCase().trim();
+      var sortTextHigher = elem.parentElement.parentElement.getAttribute('data-content')
+      var combinedText = sortTextLower + " " + sortTextHigher
+      // var sortClass = elem.parentElement.parentElement.className;
+      // var classAppend = sortClass.toLowerCase().trim();
+      // elem.parentElement.parentElement.setAttribute('data-content', sortTextLower + " " + classAppend);
+      elem.parentElement.parentElement.setAttribute('data-content', combinedText);
+    });
+
+
+
+    var mixer = mixitup(containerEl, {
+      animation: {
+        duration: 350
+      },
+      callbacks: {
+        onMixClick: function() {
+          // Reset the search if a filter is clicked
+
+          if (this.matches('[data-filter]')) {
+            inputSearch.value = '';
+          }
+        }
+      }
+    });
+
+    checkboxGroup.addEventListener('change', function() {
+      var selectors = [];
+
+      // Iterate through all checkboxes, pushing the
+      // values of those that are checked into an array
+
+      for (var i = 0; i < checkboxes.length; i++) {
+        var checkbox = checkboxes[i];
+
+        if (checkbox.checked) selectors.push(checkbox.value);
+      }
+
+      // If there are values in the array, join it into a string
+      // using your desired logic, and send to the mixer's .filter()
+      // method, otherwise filter by 'all'
+
+      var selectorString = selectors.length > 0 ?
+        selectors.join('') : // or '.' for AND logic
+        'all';
+
+      mixer.filter(selectorString);
+    });
+
+    // Set up a handler to listen for "keyup" events from the search input
+
+    inputSearch.addEventListener('keyup', function() {
+      var searchValue;
+
+      if (inputSearch.value.length < 3) {
+        // If the input value is less than 3 characters, don't send
+
+        searchValue = '';
+      } else {
+        searchValue = inputSearch.value.toLowerCase().trim();
+      }
+
+      // Very basic throttling to prevent mixer thrashing. Only search
+      // once 350ms has passed since the last keyup event
+
+      clearTimeout(keyupTimeout);
+
+      keyupTimeout = setTimeout(function() {
+        filterByString(searchValue);
+      }, 150);
+    });
+
+    /**
+     * Filters the mixer using a provided search string, which is matched against
+     * the contents of each target's "class" attribute. Any custom data-attribute(s)
+     * could also be used.
+     *
+     * @param  {string} searchValue
+     * @return {void}
+     */
+
+    function filterByString(searchValue) {
+      if (searchValue) {
+        // Use an attribute wildcard selector to check for matches
+
+        // mixer.filter('[class*="' + searchValue + '"]');
+        mixer.filter('[data-content*="' + searchValue + '"]');
+      } else {
+        // If no searchValue, treat as filter('all')
+
+        mixer.filter('all');
+      }
+    }
+    // Reset mixitup filters on close of bootstrap model
+    $('#exampleModalLong').on('hidden.bs.modal', function() {
+      // do something…
+      mixer.filter('all');
+    })
+  </script>
+</body>
+
+</html>

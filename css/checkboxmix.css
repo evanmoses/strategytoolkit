@@ -1,0 +1,327 @@
+/* element selectors */
+body {
+  font-family: 'Heebo', sans-serif;
+  background-color: #f2f1f0;
+  color: black;
+  line-height: 1.5rem;
+}
+
+header {
+  background-color: black;
+}
+
+h2, h3 {
+  font-weight: 200;
+  font-size: 1.3rem;
+}
+
+/* NAV SECTION */
+.navbar-logo img {
+  width: 100px;
+}
+
+.nav-item {
+  padding: 0 10px;
+  z-index: 1;
+}
+
+.nav-link {
+  font-size: 1.1rem;
+}
+
+@media screen and (min-width: 768px) {
+  .navbar {
+    width: 62%;
+  }
+
+  .navbar-logo img {
+    width: 200px;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .navbar {
+    width: calc(100% - 445px);
+  }
+}
+
+/* SEARCH SECTION */
+
+/* restore cancel button to search field */
+input[type="search"]::-webkit-search-cancel-button {
+  /*Bootstrap 4 override*/
+  -webkit-appearance: searchfield-cancel-button;
+}
+
+.searchbar {
+  margin: 20px auto;
+  width: 100%;
+  justify-content: center;
+}
+
+.searchbar i {
+  position: relative;
+  transform: translateX(1.8rem);
+  color: #777c81;
+}
+
+.input {
+  width: 90%;
+  height: calc(2.25rem + 2px);
+  padding: 0.375rem 0.75rem 0.375rem 2.3rem;
+  margin-right: 1rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #495057;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid black;
+  border-radius: 2rem;
+  -webkit-appearance: searchfield;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+@media screen and (min-width: 768px) {
+  .searchbar {
+    transform: translateY(-85px);
+    justify-content: flex-end;
+    padding-right: 15px;
+  }
+
+  .input {
+    width: 35%;
+    max-width: 415px;
+  }
+}
+
+/* TOOLKIT SECTION */
+@media screen and (max-width: 768px) {
+  #toolkit {
+    margin-top: 40px;
+  }
+}
+
+.toolkitcontainer {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+}
+
+.controlcontainer {
+  padding-left: 3%;
+  flex: none;
+}
+
+.checkbox-group {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-flow: column wrap;
+}
+
+.checkbox {
+  letter-spacing: 0.1rem;
+  font-size: 0.9rem;
+  line-height: 2rem;
+  padding: 0 10px 0 5px;
+  cursor: pointer;
+}
+
+.menuitem:hover {
+  background-color: #dbdbdb;
+}
+
+.menubox h3 {
+  list-style: none;
+  padding: 1rem 0 0;
+}
+
+.cat-toggle {
+  display: inline-block;
+  height: 1.3rem;
+  width: 1.3rem;
+  border-radius: 50%;
+  vertical-align: middle;
+  margin-right: 10px;
+}
+
+@media screen and (max-width: 992px) {
+  .menuitem {
+    letter-spacing: normal;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .toolkitcontainer {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .menubox {
+    flex-flow: row wrap;
+    justify-content: center;
+  }
+
+  .menubox h3 {
+    display: none;
+  }
+
+  .menuitem {
+    font-size: 0.8rem;
+    line-height: 1.7rem;
+  }
+}
+
+/* STRATEGY CARDS */
+.container {
+  width: 100%;
+  max-width: 1400px;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: flex-end;
+  padding: 0 2.2rem 0 1%;
+  margin-right: 0;
+}
+
+.toolcard {
+  text-align: center;
+  width: 200px;
+  height: 200px;
+  margin: 0 20px 40px;
+  flex: none;
+  border-radius: 15px;
+  background-color: white;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  box-shadow: 0 1.4px 1.1px rgba(0, 0, 0, 0.034), 0 3.3px 2.6px rgba(0, 0, 0, 0.048), 0 6.2px 5px rgba(0, 0, 0, 0.06), 0 11.1px 8.9px rgba(0, 0, 0, 0.072), 0 20.9px 16.7px rgba(0, 0, 0, 0.086), 0 50px 40px rgba(0, 0, 0, 0.12);
+}
+
+.toolcard:focus {
+  outline: none;
+}
+
+.toolcard-content {
+  padding: 10%;
+}
+
+.toolcard-content h2 {
+  margin: 0 auto;
+}
+
+.cat-marker {
+  display: inline-block;
+  height: 0.8rem;
+  width: 0.8rem;
+  border-radius: 50%;
+  margin-top: 40%;
+}
+
+/* MEDIA SELECTORS FOR CARD GRID  */
+
+@media screen and (max-width: 1525px) {
+  .container {
+    grid-template-columns: repeat(5, 170px);
+    grid-auto-rows: 170px;
+  }
+
+  .toolcard {
+    width: 150px;
+    height: 150px;
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .container {
+    grid-template-columns: repeat(4, 160px);
+    grid-auto-rows: 160px;
+  }
+
+  .toolcard {
+    width: 145px;
+    height: 145px;
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .container {
+    grid-template-columns: repeat(3, 160px);
+    grid-auto-rows: 160px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .container {
+    grid-template-columns: repeat(2, 160px);
+    grid-auto-rows: 160px;
+    padding-right: 1.2rem;
+    justify-content: center;
+    justify-items: center;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .container {
+    grid-template-columns: repeat(2, 150px);
+    grid-auto-rows: 150px;
+    padding: 3% 1%;
+  }
+
+  .toolcard {
+    width: 140px;
+    height: 140px;
+  }
+}
+
+/* BUTTON COLORS */
+.toolcard-content > .info-orange {
+  background-color: #f0633b;
+}
+
+.menuitem > .info-orange {
+  border: solid 1px #f0633b;
+}
+
+.menuitem:active > .info-orange {
+  background-color: #f0633b;
+}
+
+.menuitem:hover > .info-orange {
+  background-color: #f0633b;
+}
+
+.menuitem > .analysis-orange {
+  border: solid 1px #f59332;
+}
+
+.toolcard-content > .analysis-orange {
+  background-color: #f59332;
+}
+
+.menuitem:active > .analysis-orange {
+  background-color: #f59332;
+}
+
+.menuitem:hover > .analysis-orange {
+  background-color: #f59332;
+}
+
+#ideation {
+  background-color: #8fd0bb;
+}
+
+#communication {
+  background-color: #719baa;
+}
+
+#foresight {
+  background-color: #fcc9ab;
+}
+
+#business {
+  background-color: #c855c3;
+}
+
+#experience {
+  background-color: #d68a91;
+}
