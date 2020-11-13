@@ -1,3 +1,4 @@
 obsolete/
-package.json
 css/.stylelintrc
+package-lock.json
+/node_modules
