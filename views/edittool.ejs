@@ -1,0 +1,283 @@
+<% /* eslint-disable */ %>
+<%- include("header") -%>
+
+
+<form class="" action="/edittool/<%=tool._id%>?_method=put" method="post" enctype="multipart/form-data">
+  <div class="addcontainer">
+    <label class="add-title">TOOL NAME</label>
+    <input class="form-control compose" type="text" name="toolTitle" value="<%= tool.title %>" required>
+    <label class="add-title">TAGS</label>
+    <p class="add-message">Select all that apply</p>
+    <div class="compose-checkbox">
+      <div class="row no-gutters">
+        <div class="col-12 col-lg-4 ">
+          <label for="infogather">
+            <div class="checkbox">
+              <input id="infogather" class='info-orange' type="checkbox" name="tags" value=".infogather" data-category="Information Gathering"
+              <% tool.tags.forEach(function(tag) { %>
+                <% if(tag.class.includes('infogather')) { %>
+                  checked
+                <% } else { %>
+                <% } %>
+              <% }) %>
+              />
+              Information Gathering
+            </div>
+          </label>
+          <label for="analysis">
+            <div class="checkbox">
+              <input id="analysis" class="analysis-orange" type="checkbox" name="tags" value=".analysis" data-category="Problem Analysis"
+              <% tool.tags.forEach(function(tag) { %>
+                <% if(tag.class.includes('analysis')) { %>
+                  checked
+                <% } else { %>
+                <% } %>
+              <% }) %>
+              />
+              Problem Analysis
+            </div>
+          </label>
+          <label for="opportunity">
+            <div class="checkbox">
+              <input id="opportunity" class="opportunity-blue" type="checkbox" name="tags" value=".opportunity" data-category="Opportunity Analysis"
+              <% tool.tags.forEach(function(tag) { %>
+                <% if(tag.class.includes('opportunity')) { %>
+                  checked
+                <% } else { %>
+                <% } %>
+              <% }) %>
+              />
+              Opportunity Analysis
+            </div>
+          </label>
+          <label for="ideation">
+            <div class="checkbox">
+              <input id="ideation" class="ideation-blue" type="checkbox" name="tags" value=".ideation" data-category="Ideation / Evaluation"
+              <% tool.tags.forEach(function(tag) { %>
+                <% if(tag.class.includes('ideation')) { %>
+                  checked
+                <% } else { %>
+                <% } %>
+              <% }) %>
+              />
+              Ideation / Evaluation
+            </div>
+          </label>
+          <label for="stratdev">
+            <div class="checkbox">
+              <input id="stratdev" class="dev-peach" type="checkbox" name="tags" value=".stratdev" data-category="Strategy Development"
+              <% tool.tags.forEach(function(tag) { %>
+                <% if(tag.class.includes('stratdev')) { %>
+                  checked
+                <% } else { %>
+                <% } %>
+              <% }) %>
+              />
+              Strategy Development
+            </div>
+          </label>
+        </div>
+        <div class="col-12 col-lg-4 ">
+          <label for="busstrat">
+            <div class="checkbox">
+              <input id="busstrat" class="bus-grey" type="checkbox" name="tags" value=".busstrat" data-category="Business Strategy"
+              <% tool.tags.forEach(function(tag) { %>
+                <% if(tag.class.includes('busstrat')) { %>
+                  checked
+                <% } else { %>
+                <% } %>
+              <% }) %>
+              />
+              Business Strategy
+            </div>
+          </label>
+          <label for="expstrat">
+            <div class="checkbox">
+              <input id="expstrat" class="exp-purple" type="checkbox" name="tags" value=".expstrat" data-category="Experience Strategy"
+              <% tool.tags.forEach(function(tag) { %>
+                <% if(tag.class.includes('expstrat')) { %>
+                  checked
+                <% } else { %>
+                <% } %>
+              <% }) %>
+              />
+              Experience Strategy
+            </div>
+          </label>
+          <label for="stratfore">
+            <div class="checkbox">
+              <input id="stratfore" class="fore-purple" type="checkbox" name="tags" value=".stratfore" data-category="Strategic Foresight"
+              <% tool.tags.forEach(function(tag) { %>
+                <% if(tag.class.includes('stratfore')) { %>
+                  checked
+                <% } else { %>
+                <% } %>
+              <% }) %>
+              />
+              Strategic Foresight
+            </div>
+          </label>
+        </div>
+        <div class="col-12 col-lg-4 col-md-6">
+          <label for="coretool">
+            <div class="checkbox">
+              <input id="coretool" class="core-purple" type="checkbox" name="tags" value=".coretool" data-category="Core Tool"
+              <% tool.tags.forEach(function(tag) { %>
+                <% if(tag.class.includes('coretool')) { %>
+                  checked
+                <% } else { %>
+                <% } %>
+              <% }) %>
+              />
+              Core Tool
+            </div>
+          </label>
+          <label for="secondary">
+            <div class="checkbox">
+              <input id="secondary" class="sec-blue" type="checkbox" name="tags" value=".secondary" data-category="Secondary Tool"
+              <% tool.tags.forEach(function(tag) { %>
+                <% if(tag.class.includes('secondary')) { %>
+                  checked
+                <% } else { %>
+                <% } %>
+              <% }) %>
+              />
+              Secondary Tool
+            </div>
+          </label>
+          <label for="collaboration">
+            <div class="checkbox">
+              <input id="collaboration" class="collab-green" type="checkbox" name="tags" value=".collaboration" data-category="Client Collaboration"
+              <% tool.tags.forEach(function(tag) { %>
+                <% if(tag.class.includes('collaboration')) { %>
+                  checked
+                <% } else { %>
+                <% } %>
+              <% }) %>
+              />
+              Client Collaboration
+            </div>
+          </label>
+        </div>
+      </div>
+
+    </div>
+
+
+    <label class="add-title">DESCRIPTION</label>
+    <textarea class="form-control compose" type="text" rows="6" name="description"><%= tool.description %></textarea>
+    <label class="add-title">SUGGESTED APPLICATION</label>
+    <textarea class="form-control compose" type="text" rows="3" name="suggestedApp"><%= tool.suggestedApplication %></textarea>
+    <label class="add-title">WHEN TO USE IT</label>
+    <textarea class="form-control compose" type="text" rows="8" name="when"><%= tool.whenToUse %></textarea>
+    <label class="add-title">HOW TO USE IT</label>
+    <textarea class="form-control compose" type="text" rows="4" name="how"><%= tool.howToUse %></textarea>
+    <label class="add-title">STEPS</label>
+    <div class="row no-gutters">
+      <div class="col steps">
+        <div class="edit-step">
+          <div class="step-num">1.</div>
+          <textarea class="form-control compose" type="text" name="step1"><%= tool.howToSteps[0] %></textarea>
+        </div>
+
+          <% tool.howToSteps.forEach(function(step, index) { %>
+            <% if (index !== 0) { %>
+            <div class="edit-step">
+              <div class="step-num"><%= index+1 %>.</div>
+              <textarea class="form-control compose" type="text" name="step<%=index+1%>"><%= tool.howToSteps[index] %></textarea>
+            </div>
+              <% } %>
+          <% }) %>
+      </div>
+      <div class="col add-line-col">
+        <button type="button" id="add-step" class="btn btn-light add-line">+</button>
+      </div>
+    </div>
+    <div class="step-msg">
+
+    </div>
+
+
+    <label class="add-title">RESOURCES</label>
+    <div class="row no-gutters">
+      <div class="col resources">
+        <div class="edit-ref">
+          <input class="form-control compose" type="text" name="resources1" value="<%= tool.references[0]%>">
+        </div>
+        <% tool.references.forEach(function(resource, index) { %>
+          <% if (index !== 0) { %>
+          <div class="edit-ref">
+            <input class="form-control compose" type="text" value="<%=resource%>" name="resources<%=index+1%>">
+          </div>
+          <% } %>
+        <% }) %>
+      </div>
+      <div class="col add-line-col">
+        <button type="button" id="add-resource" class="btn btn-light add-line">+</button>
+      </div>
+    </div>
+    <div class="resource-msg">
+
+    </div>
+
+
+    <label class="add-title">IMAGES</label>
+    <div class="img-thumbs">
+      <% tool.img.forEach(function(img) { %>
+        <div class="thumbnail">
+          <img src="data:image/<%=img.contentType%>;base64, <%=img.data.toString('base64')%>">
+          <button class="btn btn-dark btn-sm imgdelete" type="button" data-toggle="modal" data-target="#deleteImageModal" data-id="<%=img.id%>"><i class="fas fa-trash"></i></button>
+        </div>
+      <% }) %>
+    </div>
+
+    <div class="input-group">
+      <label class="input-group-btn">
+        <span class="btn btn-light">
+          Upload New File(s) <input type="file" style="display: none;" name="images" multiple>
+        </span>
+      </label>
+      <input type="text" class="uploadfield" disabled>
+    </div>
+
+    <button class="btn btn-dark btn-lg" type="submit" name="button">Save Changes</button>
+    <button class="btn btn-danger btn-lg" type="button" name="deletebtn" data-toggle="modal" data-target="#deleteToolModal">Delete Tool</button>
+  </div>
+</form>
+
+<div class="modal fade" id="deleteImageModal" tabindex="-1" role="dialog" aria-labelledby="deleteImageModal" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header border-0">
+        <h5 class="modal-title" id="exampleModalLongTitle">Confirm Image Delete?</h5>
+      </div>
+      <div class="modal-footer border-0">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+        <form class="" id="deleteImageForm" method="post">
+          <button type="submit" class="btn btn-danger confirm-del-img">Confirm</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="deleteToolModal" tabindex="-1" role="dialog" aria-labelledby="deleteToolModal" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header border-0">
+        <h5 class="modal-title" id="exampleModalLongTitle">Are You Sure?</h5>
+      </div>
+      <div class="modal-body">
+        <p>Pressing confirm will remove the tool from the database. This cannot be reversed.</p>
+      </div>
+      <div class="modal-footer border-0">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+        <form class="" action="/edittool/<%=tool._id%>?_method=delete" method="post">
+          <button type="submit" class="btn btn-danger confirm-del-img">Confirm</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%- include("footer") -%>

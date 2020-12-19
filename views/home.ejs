@@ -1,14 +1,6 @@
 <% /* eslint-disable */ %>
 <%- include("header") -%>
 
-<main>
-  <section id="search">
-    <form class="searchbar form-inline">
-      <i class="fas fa-search"></i>
-      <input type="text" class="input" data-ref="input-search" placeholder="Search by color" />
-    </form>
-  </section>
-
 
   <section id="toolkit">
     <div class="toolkitcontainer">
@@ -17,125 +9,104 @@
 
           <div class="checkbox-group">
             <h3>TASK FOCUS</h3>
-            <div class="checkbox">
-              <input type="checkbox" value=".infogather" data-category="Information Gathering" />
-              <label>Information Gathering</label>
-            </div>
-            <div class="checkbox">
-              <input type="checkbox" value=".analysis" data-category="Analysis / Synthesis" />
-              <label>Analysis / Synthesis</label>
-            </div>
-            <div class="checkbox">
-              <input type="checkbox" value=".ideation" />
-              <label>Ideation / Evaluation</label>
-            </div>
-            <div class="checkbox">
-              <input type="checkbox" value=".communication" />
-              <label>Strategic Communication</label>
-            </div>
-            <h3>DOMAIN</h3>
-            <div class="checkbox">
-              <input type="checkbox" value=".foresight" />
-              <label>Strategic Foresight</label>
-            </div>
-            <div class="checkbox">
-              <input type="checkbox" value=".business" />
-              <label>Business Strategy</label>
-            </div>
-            <div class="checkbox">
-              <input type="checkbox" value=".experience" />
-              <label>Experience Strategy</label>
-            </div>
-            <h3>PRACTICE</h3>
-            <div class="checkbox">
-              <input type="checkbox" value=".core" />
-              <label>Core Tool</label>
-            </div>
-            <div class="checkbox">
-              <input type="checkbox" value=".peripheral" />
-              <label>Peripheral Tool</label>
-            </div>
-            <div class="checkbox">
-              <input type="checkbox" value=".workshop" />
-              <label>Workshop Tool</label>
-            </div>
+            <label for="infogather">
+              <div class="checkbox">
+                <input id="infogather" class='info-orange' type="checkbox" value=".infogather" data-category="Information Gathering" />
+                Information Gathering
+              </div>
+            </label>
+            <label for="analysis">
+              <div class="checkbox">
+                <input id="analysis" class="analysis-orange " type="checkbox" value=".analysis" data-category="Problem Analysis" />
+                Problem Analysis
+              </div>
+            </label>
+            <label for="opportunity">
+              <div class="checkbox">
+                <input id="opportunity" class="opportunity-blue" type="checkbox" value=".opportunity" data-category="Opportunity Analysis" />
+                Opportunity Analysis
+              </div>
+            </label>
+            <label for="ideation">
+              <div class="checkbox">
+                <input id="ideation" class="ideation-blue" type="checkbox" value=".ideation" data-category="Ideation / Evaluation" />
+                Ideation / Evaluation
+              </div>
+            </label>
+            <label for="stratdev">
+              <div class="checkbox">
+                <input id="stratdev" class="dev-peach" type="checkbox" value=".stratdev" data-category="Strategy Development" />
+                Strategy Development
+              </div>
+            </label>
+            <h3>SUB-CAPABILITY</h3>
+            <label for="busstrat">
+              <div class="checkbox">
+                <input id="busstrat" class="bus-grey" type="checkbox" value=".busstrat" data-category="Business Strategy" />
+                Business Strategy
+              </div>
+            </label>
+            <label for="expstrat">
+              <div class="checkbox">
+                <input id="expstrat" class="exp-purple" type="checkbox" value=".expstrat" data-category="Experience Strategy" />
+                Experience Strategy
+              </div>
+            </label>
+            <label for="stratfore">
+              <div class="checkbox">
+                <input id="stratfore" class="fore-purple" type="checkbox" value=".stratfore" data-category="Strategic Foresight" />
+                Strategic Foresight
+              </div>
+            </label>
+            <h3>APPLICATION</h3>
+            <label for="coretool">
+              <div class="checkbox">
+                <input id="coretool" class="core-purple" type="checkbox" value=".coretool" data-category="Core Tool" />
+                Core Tool
+              </div>
+            </label>
+            <label for="secondary">
+              <div class="checkbox">
+                <input id="secondary" class="sec-blue" type="checkbox" value=".secondary" data-category="Secondary Tool" />
+                Secondary Tool
+              </div>
+            </label>
+            <label for="collaboration">
+              <div class="checkbox">
+                <input id="collaboration" class="collab-green" type="checkbox" value=".collaboration" data-category="Client Collaboration" />
+                Client Collaboration
+              </div>
+            </label>
           </div>
         </div>
       </div>
 
       <div id="Container" class="container">
-        <div class="mix toolcard infogather" type="button" data-toggle="modal" data-target="#exampleModalLong" data-content="information gathering">
-          <div class="toolcard-content">
-            <h2 class="cardtitle">CO-CREATION</h2>
-            <div class="cat-marker info-orange"></div>
+        <% tools.forEach(function(tool) { %>
+          <div class="mix toolcard
+           <% tool.tags.forEach(function(tag) { %>
+             <%= tag.class %>
+           <% }) %>
+          " type="button" onclick="location.href='/tool/<%=tool._id%>';" data-content="<%=tool.title%>">
+            <div class="toolcard-content">
+              <h2 class="cardtitle"><%=tool.title%></h2>
+
+            </div>
+            <div class="cat-marker">
+              <% tool.tags.forEach(function(tag) { %>
+                <span class="<%= tag.class %>"></span>
+              <% }) %>
+            </div>
           </div>
-        </div>
-        <div class="mix toolcard analysis infogather">
-          <div class="toolcard-content">
-            <h2 class="cardtitle">ANALYSIS</h2>
-            <div class="cat-marker info-orange"></div>
-            <div class="cat-marker analysis-orange"></div>
-          </div>
-        </div>
-        <div class="mix toolcard analysis">
-          <div class="toolcard-content">
-            <h2 class="cardtitle">EMPATHY MAPPING</h2>
-            <div class="cat-marker analysis-orange"></div>
-          </div>
-        </div>
-        <div class="mix toolcard">
-          <div class="toolcard-content">
-            <h2 class="cardtitle">4</h2>
-            <div class="cat-marker info-orange"></div>
-            <div class="cat-marker info-orange"></div>
-            <div class="cat-marker info-orange"></div>
-          </div>
-        </div>
-        <div class="mix toolcard">
-          <div class="toolcard-content">
-            <h2 class="cardtitle">5</h2>
-            <div class="cat-marker info-orange"></div>
-            <div class="cat-marker info-orange"></div>
-            <div class="cat-marker info-orange"></div>
-          </div>
-        </div>
-        <div class="mix toolcard">
-          <div class="toolcard-content">
-            <h2 class="cardtitle">6</h2>
-            <div class="cat-marker info-orange"></div>
-            <div class="cat-marker info-orange"></div>
-            <div class="cat-marker info-orange"></div>
-          </div>
-        </div>
+
+        <% }) %>
       </div>
-    </div>
 
 
   </section>
-  <section id="about">
 
-  </section>
-
-  <section id="modal-container">
-    <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">
-            ...
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
 </main>
+
+
 
 <%- include("footer") -%>

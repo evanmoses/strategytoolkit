@@ -1,0 +1,154 @@
+<% /* eslint-disable */ %>
+<%- include("header") -%>
+
+
+<form class="" action="/addtool" method="post" enctype="multipart/form-data">
+  <div class="addcontainer">
+    <label class="add-title">TOOL NAME</label>
+    <input class="form-control compose" type="text" name="toolTitle" required>
+    <label class="add-title">TAGS</label>
+    <p class="add-message">Select all that apply</p>
+    <div class="compose-checkbox">
+      <div class="row no-gutters">
+        <div class="col-12 col-lg-4 ">
+          <label for="infogather">
+            <div class="checkbox">
+              <input id="infogather" class='info-orange' type="checkbox" name="tags" value=".infogather" data-category="Information Gathering" />
+              Information Gathering
+            </div>
+          </label>
+          <label for="analysis">
+            <div class="checkbox">
+              <input id="analysis" class="analysis-orange" type="checkbox" name="tags" value=".analysis" data-category="Problem Analysis" />
+              Problem Analysis
+            </div>
+          </label>
+          <label for="opportunity">
+            <div class="checkbox">
+              <input id="opportunity" class="opportunity-blue" type="checkbox" name="tags" value=".opportunity" data-category="Opportunity Analysis" />
+              Opportunity Analysis
+            </div>
+          </label>
+          <label for="ideation">
+            <div class="checkbox">
+              <input id="ideation" class="ideation-blue" type="checkbox" name="tags" value=".ideation" data-category="Ideation / Evaluation" />
+              Ideation / Evaluation
+            </div>
+          </label>
+          <label for="stratdev">
+            <div class="checkbox">
+              <input id="stratdev" class="dev-peach" type="checkbox" name="tags" value=".stratdev" data-category="Strategy Development" />
+              Strategy Development
+            </div>
+          </label>
+        </div>
+        <div class="col-12 col-lg-4 ">
+          <label for="busstrat">
+            <div class="checkbox">
+              <input id="busstrat" class="bus-grey" type="checkbox" name="tags" value=".busstrat" data-category="Business Strategy" />
+              Business Strategy
+            </div>
+          </label>
+          <label for="expstrat">
+            <div class="checkbox">
+              <input id="expstrat" class="exp-purple" type="checkbox" name="tags" value=".expstrat" data-category="Experience Strategy" />
+              Experience Strategy
+            </div>
+          </label>
+          <label for="stratfore">
+            <div class="checkbox">
+              <input id="stratfore" class="fore-purple" type="checkbox" name="tags" value=".stratfore" data-category="Strategic Foresight" />
+              Strategic Foresight
+            </div>
+          </label>
+        </div>
+        <div class="col-12 col-lg-4 col-md-6">
+          <label for="coretool">
+            <div class="checkbox">
+              <input id="coretool" class="core-purple" type="checkbox" name="tags" value=".coretool" data-category="Core Tool" />
+              Core Tool
+            </div>
+          </label>
+          <label for="secondary">
+            <div class="checkbox">
+              <input id="secondary" class="sec-blue" type="checkbox" name="tags" value=".secondary" data-category="Secondary Tool" />
+              Secondary Tool
+            </div>
+          </label>
+          <label for="collaboration">
+            <div class="checkbox">
+              <input id="collaboration" class="collab-green" type="checkbox" name="tags" value=".collaboration" data-category="Client Collaboration" />
+              Client Collaboration
+            </div>
+          </label>
+        </div>
+      </div>
+
+    </div>
+
+
+    <label class="add-title">DESCRIPTION</label>
+    <textarea class="form-control compose" type="text" rows="6" name="description"></textarea>
+    <label class="add-title">SUGGESTED APPLICATION</label>
+    <textarea class="form-control compose" type="text" rows="3" name="suggestedApp"></textarea>
+    <label class="add-title">WHEN TO USE IT</label>
+    <textarea class="form-control compose" type="text" rows="8" name="when"></textarea>
+    <label class="add-title">HOW TO USE IT</label>
+    <textarea class="form-control compose" type="text" rows="4" name="how"></textarea>
+    <label class="add-title">STEPS</label>
+    <div class="row no-gutters">
+      <div class="col steps">
+        <div>
+          <div class="step-num">1.</div>
+          <textarea class="form-control compose" type="text" name="step1"></textarea>
+        </div>
+        <div>
+          <div class="step-num">2.</div>
+          <textarea class="form-control compose" type="text" name="step2"></textarea>
+        </div>
+        <div>
+          <div class="step-num">3.</div>
+          <textarea class="form-control compose" type="text" name="step3"></textarea>
+        </div>
+      </div>
+      <div class="col add-line-col">
+        <button type="button" id="add-step" class="btn btn-light add-line">+</button>
+      </div>
+    </div>
+    <div class="step-msg">
+
+    </div>
+
+
+    <label class="add-title">RESOURCES</label>
+    <div class="row no-gutters">
+      <div class="col resources">
+        <div>
+          <input class="form-control compose" type="text" name="resources1">
+        </div>
+      </div>
+      <div class="col add-line-col">
+        <button type="button" id="add-resource" class="btn btn-light add-line">+</button>
+      </div>
+    </div>
+    <div class="resource-msg">
+
+    </div>
+
+
+    <label class="add-title">IMAGES</label>
+    <div class="input-group">
+      <label class="input-group-btn">
+        <span class="btn btn-light">
+          Upload File(s) <input type="file" style="display: none;" name="images" multiple>
+        </span>
+      </label>
+      <input type="text" class="uploadfield" disabled>
+    </div>
+
+    <button class="btn btn-dark btn-lg" type="submit" name="button">Add New Tool</button>
+  </div>
+</form>
+
+
+<%- include("footer") -%>
