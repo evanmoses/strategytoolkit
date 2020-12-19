@@ -6,7 +6,7 @@ const multer = require('multer');
 const fs = require('fs');
 const methodOverride = require('method-override');
 const basicAuth = require('express-basic-auth');
-require('dotenv/config');
+require('dotenv').config();
 
 const app = express();
 
