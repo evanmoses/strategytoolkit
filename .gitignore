@@ -1,6 +1,6 @@
 obsolete/
 css/.stylelintrc
-package-lock.json
 /node_modules
-.env
-uploads/
+npm-debug.log
+.DS_Store
+/*.env

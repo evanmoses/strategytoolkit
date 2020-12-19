@@ -5,19 +5,28 @@ const path = require('path');
 const multer = require('multer');
 const fs = require('fs');
 const methodOverride = require('method-override');
+const basicAuth = require('express-basic-auth');
 require('dotenv/config');
 
 const app = express();
 
 app.set('view engine', 'ejs');
 
-app.use(bodyParser.urlencoded({
-  extended: true,
-}));
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static('public'));
 app.use(methodOverride('_method'));
 
-mongoose.connect('mongodb://localhost:27017/stratToolDB', {
+const user = process.env.USER;
+const pass = process.env.PASS;
+function myAuthorizer(username, password) {
+  const userMatches = basicAuth.safeCompare(username, user);
+  const passwordMatches = basicAuth.safeCompare(password, pass);
+  // eslint-disable-next-line no-bitwise
+  return userMatches & passwordMatches;
+}
+app.use(basicAuth({ authorizer: myAuthorizer, challenge: true }));
+
+mongoose.connect(process.env.LOCAL_DB, /* process.env.CLOUD_DB */ {
   useNewUrlParser: true,
   useUnifiedTopology: true,
   useFindAndModify: false,
@@ -68,7 +77,6 @@ const toolSchema = new mongoose.Schema({
 const Tool = mongoose.model('Tool', toolSchema);
 
 app.get('/', (req, res) => {
-  res.set('Cache-Control', 'no-cache, private, no-store, must-revalidate, max-stale=0, post-check=0, pre-check=0');
   Tool.find({}, (err, tools) => {
     if (!err) {
       res.render('home', {
@@ -97,7 +105,6 @@ app.get('/tool/:toolID', (req, res) => {
   const requestedTitle = req.params.toolID;
   // const requestedTitle = req.params.toolName;
   Tool.findOne({ _id: requestedTitle }, (err, tool) => {
-    console.log(tool);
     if (err || !tool) {
       res.send('Error: That page does not exist.');
     } else {
@@ -205,7 +212,9 @@ app.post('/addtool', upload.array('images'), (req, res) => {
           // eslint-disable-next-line no-console
           console.log(toolStored);
         });
-        res.redirect('/');
+        setTimeout(() => {
+          res.redirect('/');
+        }, 500);
       }
     });
   }
@@ -312,7 +321,9 @@ app.put('/edittool/:toolid', upload.array('images'), (req, res) => {
           // eslint-disable-next-line no-console
           console.log(toolStored);
         });
-        res.redirect('/');
+        setTimeout(() => {
+          res.redirect('/');
+        }, 500);
       }
     });
   }
@@ -337,7 +348,10 @@ app.delete('/edittool/:toolid', (req, res) => {
   res.redirect('/');
 });
 
-app.listen(3000, () => {
-  // eslint-disable-next-line no-console
-  console.log('Server started on port 3000');
+let port = process.env.PORT;
+if (port == null || port === '') {
+  port = 8000;
+}
+app.listen(port, () => {
+  console.log('server started successfully');
 });
