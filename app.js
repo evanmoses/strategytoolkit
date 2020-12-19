@@ -12,8 +12,9 @@ const app = express();
 
 app.set('view engine', 'ejs');
 
-app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static('public'));
+app.use(bodyParser.urlencoded({ extended: true }));
+
 app.use(methodOverride('_method'));
 
 const user = process.env.USER;
@@ -350,8 +351,9 @@ app.delete('/edittool/:toolid', (req, res) => {
 
 let port = process.env.PORT;
 if (port == null || port === '') {
-  port = 8000;
+  port = 3000;
 }
+
 app.listen(port, () => {
   console.log('server started successfully');
 });
