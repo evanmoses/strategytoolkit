@@ -27,7 +27,7 @@ function myAuthorizer(username, password) {
 }
 app.use(basicAuth({ authorizer: myAuthorizer, challenge: true }));
 
-mongoose.connect(process.env.LOCAL_DB, /* process.env.CLOUD_DB */ {
+mongoose.connect(/* process.env.LOCAL_DB */process.env.CLOUD_DB, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
   useFindAndModify: false,
@@ -349,7 +349,8 @@ app.delete('/edittool/:toolid', (req, res) => {
   res.redirect('/');
 });
 
-let port = process.env.PORT;
+// let port = process.env.PORT;
+let port = ''
 if (port == null || port === '') {
   port = 3000;
 }
