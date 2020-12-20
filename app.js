@@ -32,7 +32,7 @@ app.use(basicAuth({ authorizer: myAuthorizer, challenge: true }));
 
 // eslint-disable-next-line prefer-const
 let mongoosePort = process.env.CLOUD_DB;
-mongoosePort = process.env.LOCAL_DB;
+// mongoosePort = process.env.LOCAL_DB;
 mongoose.connect(mongoosePort, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
