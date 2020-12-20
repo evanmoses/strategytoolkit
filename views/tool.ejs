@@ -7,8 +7,8 @@
         <h1><%= tool.title %></h1>
         <h3>DESCRIPTION</h3>
         <p class="tooltext"><%= tool.description %></p>
-        <% tool.img.forEach(function(img) { %>
-        <img src="data:image/<%=img.contentType%>;base64, <%=img.data.toString('base64')%>">
+        <% tool.img.forEach(function(img, index) { %>
+        <img src="data:image/<%=img.contentType%>;base64, <%=s3images[index]%>">
         <% }) %>
         <h3>WHEN TO USE IT</h3>
         <p class="tooltext"><%= tool.whenToUse %></p>

@@ -223,9 +223,9 @@
 
     <label class="add-title">IMAGES</label>
     <div class="img-thumbs">
-      <% tool.img.forEach(function(img) { %>
+      <% tool.img.forEach(function(img, index) { %>
         <div class="thumbnail">
-          <img src="data:image/<%=img.contentType%>;base64, <%=img.data.toString('base64')%>">
+          <img src="data:image/<%=img.contentType%>;base64, <%=s3images[index]%>">
           <button class="btn btn-dark btn-sm imgdelete" type="button" data-toggle="modal" data-target="#deleteImageModal" data-id="<%=img.id%>"><i class="fas fa-trash"></i></button>
         </div>
       <% }) %>

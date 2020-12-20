@@ -1,14 +1,17 @@
+const aws = require('aws-sdk');
 const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
-const path = require('path');
 const multer = require('multer');
-const fs = require('fs');
+const multerS3 = require('multer-s3');
 const methodOverride = require('method-override');
 const basicAuth = require('express-basic-auth');
 require('dotenv').config();
 
 const app = express();
+
+const bucketName = 'strategy-toolkit-images';
+const s3 = new aws.S3({ apiVersion: '2006-03-01', region: 'us-east-1' });
 
 app.set('view engine', 'ejs');
 
@@ -27,18 +30,24 @@ function myAuthorizer(username, password) {
 }
 app.use(basicAuth({ authorizer: myAuthorizer, challenge: true }));
 
-mongoose.connect(/* process.env.LOCAL_DB */process.env.CLOUD_DB, {
+// eslint-disable-next-line prefer-const
+let mongoosePort = process.env.CLOUD_DB;
+mongoosePort = process.env.LOCAL_DB;
+mongoose.connect(mongoosePort, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
   useFindAndModify: false,
   useCreateIndex: true,
 });
 
-const storage = multer.diskStorage({
+const storage = multerS3({
+  acl: 'public-read',
+  s3,
+  bucket: bucketName,
   destination: (req, file, cb) => {
-    cb(null, 'uploads');
+    cb(null, { fieldName: file.fieldname });
   },
-  filename: (req, file, cb) => {
+  key: (req, file, cb) => {
     cb(null, `${file.fieldname}-${Date.now()}`);
   },
 });
@@ -103,24 +112,67 @@ app.get('/addtool', (req, res) => {
 });
 
 app.get('/tool/:toolID', (req, res) => {
-  const requestedTitle = req.params.toolID;
+  const { toolID } = req.params;
+
   // const requestedTitle = req.params.toolName;
-  Tool.findOne({ _id: requestedTitle }, (err, tool) => {
+  Tool.findOne({ _id: toolID }, (err, tool) => {
     if (err || !tool) {
       res.send('Error: That page does not exist.');
     } else {
-      res.render('tool', { page_name: 'tool', tool });
+      const s3images = [];
+      const toolImages = tool.img;
+      toolImages.forEach((img, index, array) => {
+        const s3params = { Bucket: bucketName, Key: img.data.toString() };
+        async function getImage() {
+          const data = s3.getObject(s3params).promise();
+          return data;
+        }
+        function encode(data) {
+          const buf = Buffer.from(data);
+          const base64 = buf.toString('base64');
+          return base64;
+        }
+        getImage().then((s3img) => {
+          s3images.push(encode(s3img.Body));
+          if (s3images.length === array.length) {
+            res.render('tool', { page_name: 'tool', tool, s3images });
+          }
+        });
+      });
     }
   });
 });
 
 app.get('/edittool/:toolID', (req, res) => {
-  const requestedTitle = req.params.toolID;
-  Tool.findOne({ _id: requestedTitle }, (err, tool) => {
+  const { toolID } = req.params;
+
+  // const requestedTitle = req.params.toolName;
+  Tool.findOne({ _id: toolID }, (err, tool) => {
     if (err || !tool) {
       res.send('Error: That page does not exist.');
     } else {
-      res.render('edittool', { page_name: 'edittool', libs: ['edittool'], tool });
+      const s3images = [];
+      const toolImages = tool.img;
+      toolImages.forEach((img, index, array) => {
+        const s3params = { Bucket: bucketName, Key: img.data.toString() };
+        async function getImage() {
+          const data = s3.getObject(s3params).promise();
+          return data;
+        }
+        function encode(data) {
+          const buf = Buffer.from(data);
+          const base64 = buf.toString('base64');
+          return base64;
+        }
+        getImage().then((s3img) => {
+          s3images.push(encode(s3img.Body));
+          if (s3images.length === array.length) {
+            res.render('edittool', {
+              page_name: 'edittool', libs: ['edittool'], tool, s3images,
+            });
+          }
+        });
+      });
     }
   });
 });
@@ -157,9 +209,8 @@ app.post('/addtool', upload.array('images'), (req, res) => {
   if (files) {
     for (let i = 0; i < files.length; i += 1) {
       const image = {
-        data: fs.readFileSync(path.join(__dirname, 'uploads', req.files[i].filename)),
+        data: req.files[i].key,
         contentType: req.files[i].mimetype,
-        filepath: path.join('uploads', req.files[i].filename),
       };
       images.push(image);
     }
@@ -228,8 +279,9 @@ app.put('/edittool/:toolid/:imgid', (req, res) => {
     { $pull: { img: { _id: imageID } } }, { safe: true, new: false }, (err, obj) => {
       if (err) res.status(500);
       const thisIMG = obj.img.id(imageID);
-      const imgPath = thisIMG.filepath;
-      fs.unlink(imgPath, (error) => {
+      const imgPath = thisIMG.data.toString();
+      const s3params = { Bucket: bucketName, Key: imgPath };
+      s3.deleteObject(s3params, (error) => {
         if (error) {
           console.log(`failed to delete local image: ${error}`);
         } else {
@@ -266,9 +318,8 @@ app.put('/edittool/:toolid', upload.array('images'), (req, res) => {
     });
     for (let i = 0; i < files.length; i += 1) {
       const image = {
-        data: fs.readFileSync(path.join(__dirname, 'uploads', req.files[i].filename)),
+        data: req.files[i].key,
         contentType: req.files[i].mimetype,
-        filepath: path.join('uploads', req.files[i].filename),
       };
       images.push(image);
     }
@@ -336,8 +387,9 @@ app.delete('/edittool/:toolid', (req, res) => {
     if (err) res.status(500);
     const images = obj.img;
     images.forEach((img) => {
-      const imgPath = img.filepath;
-      fs.unlink(imgPath, (error) => {
+      const imgPath = img.data.toString();
+      const s3params = { Bucket: bucketName, Key: imgPath };
+      s3.deleteObject(s3params, (error) => {
         if (error) {
           console.log(`failed to delete local image: ${error}`);
         } else {
@@ -346,10 +398,13 @@ app.delete('/edittool/:toolid', (req, res) => {
       });
     });
   });
-  res.redirect('/');
+  setTimeout(() => {
+    res.redirect('/');
+  }, 500);
 });
 
 let port = process.env.PORT;
+// port = ''
 if (port == null || port === '') {
   port = 3000;
 }
