@@ -630,13 +630,13 @@ ol li {
   .checkbox:hover { background-color: #dbdbdb; }
   .checkbox:hover > .info-orange { background-color: #f0633b; }
   .checkbox:hover > .analysis-orange { background-color: #f59332; }
-  .checkbox:hover > .opportunity-blue { background-color: #f0633b; }
-  .checkbox:hover > .ideation-blue { background-color: #f0633b; }
-  .checkbox:hover > .dev-peach { background-color: #f0633b; }
-  .checkbox:hover > .bus-grey { background-color: #f0633b; }
-  .checkbox:hover > .exp-purple { background-color: #f0633b; }
-  .checkbox:hover > .fore-purple { background-color: #f0633b; }
-  .checkbox:hover > .core-purple { background-color: #f0633b; }
-  .checkbox:hover > .sec-blue { background-color: #f0633b; }
-  .checkbox:hover > .collab-green { background-color: #f0633b; }
+  .checkbox:hover > .opportunity-blue { background-color: #8fd0bb; }
+  .checkbox:hover > .ideation-blue { background-color: #719baa; }
+  .checkbox:hover > .dev-peach { background-color: #fcc9ab; }
+  .checkbox:hover > .bus-grey { background-color: #c8c5c3; }
+  .checkbox:hover > .exp-purple { background-color: #d68a91; }
+  .checkbox:hover > .fore-purple { background-color: #c7a3c4; }
+  .checkbox:hover > .core-purple { background-color: #7872b5; }
+  .checkbox:hover > .sec-blue { background-color: #badbde; }
+  .checkbox:hover > .collab-green { background-color: #6fad96; }
 }
