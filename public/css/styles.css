@@ -144,10 +144,6 @@ label {
   cursor: pointer;
 }
 
-.checkbox:hover {
-  background-color: #dbdbdb;
-}
-
 .checkbox-group h3 {
   padding: 1rem 0 0;
 }
@@ -546,7 +542,7 @@ ol li {
   border: solid 1px #f0633b;
 }
 
-.toolcard-content > .info-orange, .checkbox:active > .info-orange, .checkbox:hover > .info-orange, input[type=checkbox]:checked.info-orange, span.infogather {
+.toolcard-content > .info-orange, .checkbox:active > .info-orange, input[type=checkbox]:checked.info-orange, span.infogather {
   background-color: #f0633b;
 }
 
@@ -554,7 +550,7 @@ ol li {
   border: solid 1px #f59332;
 }
 
-.toolcard-content > .analysis-orange, .checkbox:active > .analysis-orange, .checkbox:hover > .analysis-orange, input[type=checkbox]:checked.analysis-orange, span.analysis {
+.toolcard-content > .analysis-orange, .checkbox:active > .analysis-orange, input[type=checkbox]:checked.analysis-orange, span.analysis {
   background-color: #f59332;
 }
 
@@ -562,7 +558,7 @@ ol li {
   border: solid 1px #8fd0bb;
 }
 
-.toolcard-content > .opportunity-blue, .checkbox:active > .opportunity-blue, .checkbox:hover > .opportunity-blue, input[type=checkbox]:checked.opportunity-blue, span.opportunity {
+.toolcard-content > .opportunity-blue, .checkbox:active > .opportunity-blue,  input[type=checkbox]:checked.opportunity-blue, span.opportunity {
   background-color: #8fd0bb;
 }
 
@@ -570,7 +566,7 @@ ol li {
   border: solid 1px #719baa;
 }
 
-.toolcard-content > .ideation-blue, .checkbox:active > .ideation-blue, .checkbox:hover > .ideation-blue, input[type=checkbox]:checked.ideation-blue, span.ideation {
+.toolcard-content > .ideation-blue, .checkbox:active > .ideation-blue, input[type=checkbox]:checked.ideation-blue, span.ideation {
   background-color: #719baa;
 }
 
@@ -578,7 +574,7 @@ ol li {
   border: solid 1px #fcc9ab;
 }
 
-.toolcard-content > .dev-peach, .checkbox:active > .dev-peach, .checkbox:hover > .dev-peach, input[type=checkbox]:checked.dev-peach, span.stratdev {
+.toolcard-content > .dev-peach, .checkbox:active > .dev-peach, input[type=checkbox]:checked.dev-peach, span.stratdev {
   background-color: #fcc9ab;
 }
 
@@ -586,7 +582,7 @@ ol li {
   border: solid 1px #c8c5c3;
 }
 
-.toolcard-content > .bus-grey, .checkbox:active > .bus-grey, .checkbox:hover > .bus-grey, input[type=checkbox]:checked.bus-grey, span.busstrat {
+.toolcard-content > .bus-grey, .checkbox:active > .bus-grey, input[type=checkbox]:checked.bus-grey, span.busstrat {
   background-color: #c8c5c3;
 }
 
@@ -594,7 +590,7 @@ ol li {
   border: solid 1px #d68a91;
 }
 
-.toolcard-content > .exp-purple, .checkbox:active > .exp-purple, .checkbox:hover > .exp-purple, input[type=checkbox]:checked.exp-purple, span.expstrat {
+.toolcard-content > .exp-purple, .checkbox:active > .exp-purple, input[type=checkbox]:checked.exp-purple, span.expstrat {
   background-color: #d68a91;
 }
 
@@ -602,7 +598,7 @@ ol li {
   border: solid 1px #c7a3c4;
 }
 
-.toolcard-content > .fore-purple, .checkbox:active > .fore-purple, .checkbox:hover > .fore-purple, input[type=checkbox]:checked.fore-purple, span.stratfore {
+.toolcard-content > .fore-purple, .checkbox:active > .fore-purple, input[type=checkbox]:checked.fore-purple, span.stratfore {
   background-color: #c7a3c4;
 }
 
@@ -610,7 +606,7 @@ ol li {
   border: solid 1px #7872b5;
 }
 
-.toolcard-content > .core-purple, .checkbox:active > .core-purple, .checkbox:hover > .core-purple, input[type=checkbox]:checked.core-purple, span.coretool {
+.toolcard-content > .core-purple, .checkbox:active > .core-purple, input[type=checkbox]:checked.core-purple, span.coretool {
   background-color: #7872b5;
 }
 
@@ -618,7 +614,7 @@ ol li {
   border: solid 1px #badbde;
 }
 
-.toolcard-content > .sec-blue, .checkbox:active > .sec-blue, .checkbox:hover > .sec-blue, input[type=checkbox]:checked.sec-blue, span.secondary {
+.toolcard-content > .sec-blue, .checkbox:active > .sec-blue, input[type=checkbox]:checked.sec-blue, span.secondary {
   background-color: #badbde;
 }
 
@@ -626,6 +622,21 @@ ol li {
   border: solid 1px #6fad96;
 }
 
-.toolcard-content > .collab-green, .checkbox:active > .collab-green, .checkbox:hover > .collab-green, input[type=checkbox]:checked.collab-green, span.collaboration {
+.toolcard-content > .collab-green, .checkbox:active > .collab-green, input[type=checkbox]:checked.collab-green, span.collaboration {
   background-color: #6fad96;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .checkbox:hover { background-color: #dbdbdb; }
+  .checkbox:hover > .info-orange { background-color: #f0633b; }
+  .checkbox:hover > .analysis-orange { background-color: #f59332; }
+  .checkbox:hover > .opportunity-blue { background-color: #f0633b; }
+  .checkbox:hover > .ideation-blue { background-color: #f0633b; }
+  .checkbox:hover > .dev-peach { background-color: #f0633b; }
+  .checkbox:hover > .bus-grey { background-color: #f0633b; }
+  .checkbox:hover > .exp-purple { background-color: #f0633b; }
+  .checkbox:hover > .fore-purple { background-color: #f0633b; }
+  .checkbox:hover > .core-purple { background-color: #f0633b; }
+  .checkbox:hover > .sec-blue { background-color: #f0633b; }
+  .checkbox:hover > .collab-green { background-color: #f0633b; }
 }
