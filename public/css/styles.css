@@ -1,4 +1,6 @@
 /* element selectors */
+-webkit-appearance: none
+
 body {
   font-family: 'Heebo', sans-serif;
   background-color: #f2f1f0;
@@ -155,6 +157,7 @@ label {
   border-radius: 50%;
   vertical-align: middle;
   margin-right: 10px;
+  -webkit-appearance: none;
 }
 
 input[type='checkbox']:focus {
@@ -216,6 +219,7 @@ input[type='checkbox']:focus {
   outline: none;
   cursor: pointer;
   box-shadow: 0 1.4px 1.1px rgba(0, 0, 0, 0.034), 0 3.3px 2.6px rgba(0, 0, 0, 0.048), 0 6.2px 5px rgba(0, 0, 0, 0.06), 0 11.1px 8.9px rgba(0, 0, 0, 0.072), 0 20.9px 16.7px rgba(0, 0, 0, 0.086), 0 50px 40px rgba(0, 0, 0, 0.12);
+  -webkit-appearance: none;
 }
 
 .toolcard:focus {
