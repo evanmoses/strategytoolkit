@@ -20,7 +20,8 @@ let keyupTimeout;
 sortArray.forEach((elem) => {
   const sortText = elem.innerText || elem.innerContent;
   const sortTextLower = sortText.toLowerCase().trim();
-  const sortTextHigher = elem.parentElement.parentElement.getAttribute('data-content');
+  const sortTextHigher = elem.parentElement.parentElement.getAttribute('data-content').toLowerCase();
+  console.log(sortTextHigher);
   const combinedText = `${sortTextLower} ${sortTextHigher}`;
   // var sortClass = elem.parentElement.parentElement.className;
   // var classAppend = sortClass.toLowerCase().trim();

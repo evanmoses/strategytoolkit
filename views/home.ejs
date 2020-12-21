@@ -87,7 +87,11 @@
            <% tool.tags.forEach(function(tag) { %>
              <%= tag.class %>
            <% }) %>
-          " type="button" onclick="location.href='/tool/<%=tool._id%>';" data-content="<%=tool.title%>">
+          " type="button" onclick="location.href='/tool/<%=tool._id%>';" data-content="
+          <% tool.tags.forEach(function(tag) { %>
+            <%= tag.text %>
+          <% }) %>
+          ">
             <div class="toolcard-content">
               <h2 class="cardtitle"><%=tool.title%></h2>
 
