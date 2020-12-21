@@ -32,7 +32,7 @@ app.use(basicAuth({ authorizer: myAuthorizer, challenge: true }));
 
 // eslint-disable-next-line prefer-const
 let mongoosePort = process.env.CLOUD_DB;
-// mongoosePort = process.env.LOCAL_DB;
+mongoosePort = process.env.LOCAL_DB;
 mongoose.connect(mongoosePort, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
@@ -121,24 +121,28 @@ app.get('/tool/:toolID', (req, res) => {
     } else {
       const s3images = [];
       const toolImages = tool.img;
-      toolImages.forEach((img, index, array) => {
-        const s3params = { Bucket: bucketName, Key: img.data.toString() };
-        async function getImage() {
-          const data = s3.getObject(s3params).promise();
-          return data;
-        }
-        function encode(data) {
-          const buf = Buffer.from(data);
-          const base64 = buf.toString('base64');
-          return base64;
-        }
-        getImage().then((s3img) => {
-          s3images.push(encode(s3img.Body));
-          if (s3images.length === array.length) {
-            res.render('tool', { page_name: 'tool', tool, s3images });
+      if (toolImages === undefined || toolImages.length === 0) {
+        res.render('tool', { page_name: 'tool', tool });
+      } else {
+        toolImages.forEach((img, index, array) => {
+          const s3params = { Bucket: bucketName, Key: img.data.toString() };
+          async function getImage() {
+            const data = s3.getObject(s3params).promise();
+            return data;
           }
+          function encode(data) {
+            const buf = Buffer.from(data);
+            const base64 = buf.toString('base64');
+            return base64;
+          }
+          getImage().then((s3img) => {
+            s3images.push(encode(s3img.Body));
+            if (s3images.length === array.length) {
+              res.render('tool', { page_name: 'tool', tool, s3images });
+            }
+          });
         });
-      });
+      }
     }
   });
 });
@@ -153,26 +157,30 @@ app.get('/edittool/:toolID', (req, res) => {
     } else {
       const s3images = [];
       const toolImages = tool.img;
-      toolImages.forEach((img, index, array) => {
-        const s3params = { Bucket: bucketName, Key: img.data.toString() };
-        async function getImage() {
-          const data = s3.getObject(s3params).promise();
-          return data;
-        }
-        function encode(data) {
-          const buf = Buffer.from(data);
-          const base64 = buf.toString('base64');
-          return base64;
-        }
-        getImage().then((s3img) => {
-          s3images.push(encode(s3img.Body));
-          if (s3images.length === array.length) {
-            res.render('edittool', {
-              page_name: 'edittool', libs: ['edittool'], tool, s3images,
-            });
+      if (toolImages === undefined || toolImages.length === 0) {
+        res.render('edittool', { page_name: 'edittool', libs: ['edittool'], tool });
+      } else {
+        toolImages.forEach((img, index, array) => {
+          const s3params = { Bucket: bucketName, Key: img.data.toString() };
+          async function getImage() {
+            const data = s3.getObject(s3params).promise();
+            return data;
           }
+          function encode(data) {
+            const buf = Buffer.from(data);
+            const base64 = buf.toString('base64');
+            return base64;
+          }
+          getImage().then((s3img) => {
+            s3images.push(encode(s3img.Body));
+            if (s3images.length === array.length) {
+              res.render('edittool', {
+                page_name: 'edittool', libs: ['edittool'], tool, s3images,
+              });
+            }
+          });
         });
-      });
+      }
     }
   });
 });

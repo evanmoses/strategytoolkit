@@ -223,7 +223,7 @@ input[type='checkbox']:focus {
 }
 
 .toolcard-content {
-  padding: 10%;
+  padding: 10% 5%;
 }
 
 .toolcard-content h2 {
@@ -235,7 +235,7 @@ input[type='checkbox']:focus {
 }
 
 .cat-marker {
-  margin: 1rem;
+  margin: 0.5rem;
 }
 
 .cat-marker > span {
@@ -243,7 +243,7 @@ input[type='checkbox']:focus {
   width: 0.8rem;
   border-radius: 50%;
   display: inline-block;
-  margin-right: 1px;
+  margin-right: 0;
 }
 
 /* MEDIA SELECTORS FOR CARD GRID  */
@@ -257,6 +257,10 @@ input[type='checkbox']:focus {
   .toolcard {
     width: 150px;
     height: 150px;
+  }
+
+  .cardtitle {
+    font-size: 1.1rem;
   }
 }
 
