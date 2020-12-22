@@ -1,3 +1,8 @@
+* {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
 
 body {
   font-family: 'Heebo', sans-serif;
@@ -160,7 +165,13 @@ label {
 }
 
 input[type='checkbox']:focus {
-  display: none;
+  visibility: hidden;
+}
+
+@-moz-document url-prefix() {
+  input[type='checkbox']:focus {
+    visibility: visible;
+  }
 }
 
 @media screen and (max-width: 992px) {
