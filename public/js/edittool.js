@@ -40,9 +40,8 @@ const delImgForm = document.getElementById('deleteImageForm');
 $(document).on('shown.bs.modal', delImgModal, (e) => {
   const clickerImage = $(e.relatedTarget);
   const imageID = clickerImage.data('id');
-  const toolID = window.location.href.substring(31);
-  console.log(toolID);
-  delImgForm.setAttribute('action', `/edittool/${toolID}/${imageID}?_method=put`);
+  const thisURL = window.location.href;
+  delImgForm.setAttribute('action', `${thisURL}/${imageID}?_method=put`);
 });
 
 $(function() {
