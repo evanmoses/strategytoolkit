@@ -555,6 +555,19 @@ ol li {
   margin: 0;
 }
 
+/* ABOUT PAGE */
+
+.aboutcol {
+  padding: 5% 10% 10%;
+}
+
+.aboutcol img {
+  width: 100%;
+  max-width: 800px;
+  margin-top: 5px;
+  margin-bottom: 40px;
+}
+
 /* TAG COLORS */
 
 .checkbox > .info-orange {

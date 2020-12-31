@@ -5,7 +5,7 @@ const mongoose = require('mongoose');
 const multer = require('multer');
 const multerS3 = require('multer-s3');
 const methodOverride = require('method-override');
-const basicAuth = require('express-basic-auth');
+// const basicAuth = require('express-basic-auth');
 require('dotenv').config();
 
 const app = express();
@@ -20,19 +20,19 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(methodOverride('_method'));
 
-const user = process.env.USER;
-const pass = process.env.PASS;
-function myAuthorizer(username, password) {
-  const userMatches = basicAuth.safeCompare(username, user);
-  const passwordMatches = basicAuth.safeCompare(password, pass);
-  // eslint-disable-next-line no-bitwise
-  return userMatches & passwordMatches;
-}
-app.use(basicAuth({ authorizer: myAuthorizer, challenge: true }));
+// const user = process.env.USER;
+// const pass = process.env.PASS;
+// function myAuthorizer(username, password) {
+//   const userMatches = basicAuth.safeCompare(username, user);
+//   const passwordMatches = basicAuth.safeCompare(password, pass);
+//   // eslint-disable-next-line no-bitwise
+//   return userMatches & passwordMatches;
+// }
+// app.use(basicAuth({ authorizer: myAuthorizer, challenge: true }));
 
 // eslint-disable-next-line prefer-const
 let mongoosePort = process.env.CLOUD_DB;
-// mongoosePort = process.env.LOCAL_DB;
+mongoosePort = process.env.LOCAL_DB;
 mongoose.connect(mongoosePort, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
