@@ -2,7 +2,7 @@
 <%- include("header") -%>
 
 
-<form class="" action="/edittool/<%=tool._id%>?_method=put" method="post" enctype="multipart/form-data">
+<form class="" action="strategytoolkit/edittool/<%=tool._id%>?_method=put" method="post" enctype="multipart/form-data">
   <div class="addcontainer">
     <label class="add-title">TOOL NAME</label>
     <input class="form-control compose" type="text" name="toolTitle" value="<%= tool.title %>" required>
@@ -272,7 +272,7 @@
       </div>
       <div class="modal-footer border-0">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-        <form class="" action="/edittool/<%=tool._id%>?_method=delete" method="post">
+        <form class="" action="strategytoolkit/edittool/<%=tool._id%>?_method=delete" method="post">
           <button type="submit" class="btn btn-danger confirm-del-img">Confirm</button>
         </form>
       </div>
