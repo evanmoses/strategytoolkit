@@ -13,6 +13,8 @@ const app = express();
 const bucketName = 'strategy-toolkit-images';
 const s3 = new aws.S3({ apiVersion: '2006-03-01', region: 'us-east-1' });
 
+app.use('/strategytoolkit', app.router);
+
 app.set('view engine', 'ejs');
 
 app.use(express.static('public'));
@@ -414,7 +416,7 @@ app.delete('/edittool/:toolid', (req, res) => {
 let port = process.env.PORT;
 // port = ''
 if (port == null || port === '') {
-  port = 3000;
+  port = 5000;
 }
 
 app.listen(port, () => {
