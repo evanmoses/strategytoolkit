@@ -13,7 +13,9 @@ const app = express();
 const bucketName = 'strategy-toolkit-images';
 const s3 = new aws.S3({ apiVersion: '2006-03-01', region: 'us-east-1' });
 
-app.use('/strategytoolkit', app.router);
+const router = express.Router();
+
+app.use('/strategytoolkit', router);
 
 app.set('view engine', 'ejs');
 
@@ -88,7 +90,7 @@ const toolSchema = new mongoose.Schema({
 
 const Tool = mongoose.model('Tool', toolSchema);
 
-app.get('/', (req, res) => {
+router.get('/', (req, res) => {
   Tool.find({}, (err, tools) => {
     if (!err) {
       res.render('home', {
@@ -100,20 +102,20 @@ app.get('/', (req, res) => {
   });
 });
 
-app.get('/about', (req, res) => {
+router.get('/about', (req, res) => {
   res.render('about', {
     page_name: 'about',
   });
 });
 
-app.get('/addtool', (req, res) => {
+router.get('/addtool', (req, res) => {
   res.render('addtool', {
     page_name: 'addtool',
     libs: ['addtool'],
   });
 });
 
-app.get('/tool/:toolID', (req, res) => {
+router.get('/tool/:toolID', (req, res) => {
   const { toolID } = req.params;
 
   // const requestedTitle = req.params.toolName;
@@ -149,7 +151,7 @@ app.get('/tool/:toolID', (req, res) => {
   });
 });
 
-app.get('/edittool/:toolID', (req, res) => {
+router.get('/edittool/:toolID', (req, res) => {
   const { toolID } = req.params;
 
   // const requestedTitle = req.params.toolName;
@@ -201,7 +203,7 @@ tagMap.set('.coretool', 'Core Tool');
 tagMap.set('.secondary', 'Secondary Tool');
 tagMap.set('.collaboration', 'Client collaboration');
 
-app.post('/addtool', upload.array('images'), (req, res) => {
+router.post('/addtool', upload.array('images'), (req, res) => {
   const { files } = req;
 
   const tagArray = [];
@@ -282,7 +284,7 @@ app.post('/addtool', upload.array('images'), (req, res) => {
   }
 });
 
-app.put('/edittool/:toolid/:imgid', (req, res) => {
+router.put('/edittool/:toolid/:imgid', (req, res) => {
   const imageID = req.params.imgid;
   const toolID = req.params.toolid;
   Tool.findOneAndUpdate({ _id: toolID },
@@ -302,7 +304,7 @@ app.put('/edittool/:toolid/:imgid', (req, res) => {
     });
 });
 
-app.put('/edittool/:toolid', upload.array('images'), (req, res) => {
+router.put('/edittool/:toolid', upload.array('images'), (req, res) => {
   const { files } = req;
   const toolID = req.params.toolid;
 
@@ -391,7 +393,7 @@ app.put('/edittool/:toolid', upload.array('images'), (req, res) => {
   }
 });
 
-app.delete('/edittool/:toolid', (req, res) => {
+router.delete('/edittool/:toolid', (req, res) => {
   const toolID = req.params.toolid;
   Tool.findOneAndDelete({ _id: toolID }, (err, obj) => {
     if (err) res.status(500);
