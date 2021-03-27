@@ -5,6 +5,7 @@ const mongoose = require('mongoose');
 const multer = require('multer');
 const multerS3 = require('multer-s3');
 const methodOverride = require('method-override');
+const path = require('path');
 // const basicAuth = require('express-basic-auth');
 require('dotenv').config();
 
@@ -19,7 +20,7 @@ app.use('/strategytoolkit', router);
 
 app.set('view engine', 'ejs');
 
-app.use('/strategytoolkit', express.static('public'));
+app.use('/strategytoolkit', express.static(path.join(__dirname, 'public')));
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(methodOverride('_method'));
