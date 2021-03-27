@@ -14,13 +14,13 @@ const app = express();
 const bucketName = 'strategy-toolkit-images';
 const s3 = new aws.S3({ apiVersion: '2006-03-01', region: 'us-east-1' });
 
-const router = express.Router();
+app.use('/strategytoolkit', express.static(path.join(__dirname, 'public')));
 
+const router = express.Router();
 app.use('/strategytoolkit', router);
 
 app.set('view engine', 'ejs');
 
-app.use('/strategytoolkit', express.static(path.join(__dirname, 'public')));
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(methodOverride('_method'));
