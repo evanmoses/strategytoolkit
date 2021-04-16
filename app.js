@@ -6,8 +6,9 @@ const multer = require('multer');
 const multerS3 = require('multer-s3');
 const methodOverride = require('method-override');
 const path = require('path');
-// const basicAuth = require('express-basic-auth');
 require('dotenv').config();
+
+const indexRouter = require('./routes/index');
 
 const app = express();
 
@@ -17,23 +18,13 @@ const s3 = new aws.S3({ apiVersion: '2006-03-01', region: 'us-east-1' });
 app.use('/strategytoolkit', express.static(path.join(__dirname, 'public')));
 
 const router = express.Router();
-app.use('/strategytoolkit', router);
+app.use('/', indexRouter);
 
 app.set('view engine', 'ejs');
 
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(methodOverride('_method'));
-
-// const user = process.env.USER;
-// const pass = process.env.PASS;
-// function myAuthorizer(username, password) {
-//   const userMatches = basicAuth.safeCompare(username, user);
-//   const passwordMatches = basicAuth.safeCompare(password, pass);
-//   // eslint-disable-next-line no-bitwise
-//   return userMatches & passwordMatches;
-// }
-// app.use(basicAuth({ authorizer: myAuthorizer, challenge: true }));
 
 // eslint-disable-next-line prefer-const
 let mongoosePort = process.env.CLOUD_DB;
@@ -59,50 +50,6 @@ const storage = multerS3({
 
 const upload = multer({ storage });
 
-const toolSchema = new mongoose.Schema({
-  title: {
-    type: String,
-    required: true,
-    index: {
-      unique: true,
-      collation: {
-        locale: 'en',
-        strength: 2,
-      },
-    },
-  },
-  tags: [{
-    text: String,
-    class: String,
-  }],
-
-  description: String,
-  whenToUse: String,
-  howToUse: String,
-  howToSteps: [String],
-  suggestedApplication: String,
-  references: [String],
-  img: [{
-    data: Buffer,
-    contentType: String,
-    filepath: String,
-  }],
-});
-
-const Tool = mongoose.model('Tool', toolSchema);
-
-router.get('/', (req, res) => {
-  Tool.find({}, (err, tools) => {
-    if (!err) {
-      res.render('home', {
-        page_name: '',
-        libs: ['home'],
-        tools,
-      });
-    }
-  });
-});
-
 router.get('/about', (req, res) => {
   res.render('about', {
     page_name: 'about',
@@ -119,7 +66,6 @@ router.get('/addtool', (req, res) => {
 router.get('/tool/:toolID', (req, res) => {
   const { toolID } = req.params;
 
-  // const requestedTitle = req.params.toolName;
   Tool.findOne({ _id: toolID }, (err, tool) => {
     if (err || !tool) {
       res.send('Error: That page does not exist.');
@@ -155,7 +101,6 @@ router.get('/tool/:toolID', (req, res) => {
 router.get('/edittool/:toolID', (req, res) => {
   const { toolID } = req.params;
 
-  // const requestedTitle = req.params.toolName;
   Tool.findOne({ _id: toolID }, (err, tool) => {
     if (err || !tool) {
       res.send('Error: That page does not exist.');

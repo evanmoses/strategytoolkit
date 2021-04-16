@@ -22,10 +22,6 @@ sortArray.forEach((elem) => {
   const sortTextLower = sortText.toLowerCase().trim();
   const sortTextHigher = elem.parentElement.parentElement.getAttribute('data-content').toLowerCase();
   const combinedText = `${sortTextLower} ${sortTextHigher}`;
-  // var sortClass = elem.parentElement.parentElement.className;
-  // var classAppend = sortClass.toLowerCase().trim();
-  // elem.parentElement.parentElement.setAttribute('data-content',
-  // sortTextLower + " " + classAppend);
   elem.parentElement.parentElement.setAttribute('data-content', combinedText);
 });
 
@@ -113,9 +109,3 @@ function filterByString(searchValue) {
     mixer.filter('all');
   }
 }
-// Reset mixitup filters on close of bootstrap model
-// document.querySelectorAll('#exampleModalLong').on('hidden.bs.modal', () => {
-//   mixer.filter('all');
-// });
-
-// BUTTON BEHAVIOURS
