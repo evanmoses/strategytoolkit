@@ -16,7 +16,7 @@ router.get('/:toolID', (req, res) => {
       const s3images = [];
       const toolImages = tool.img;
       if (toolImages === undefined || toolImages.length === 0) {
-        res.render('edittool', { page_name: 'edittool', libs: ['../edittool'], tool });
+        res.render('edittool', { page_name: 'edittool', libs: ['edittool-lib'], tool });
       } else {
         toolImages.forEach((img, index, array) => {
           const s3params = { Bucket: bucketName, Key: img.data.toString() };
@@ -33,7 +33,7 @@ router.get('/:toolID', (req, res) => {
             s3images.push(encode(s3img.Body));
             if (s3images.length === array.length) {
               res.render('edittool', {
-                page_name: 'edittool', libs: ['../edittool'], tool, s3images,
+                page_name: 'edittool', libs: ['edittool-lib'], tool, s3images,
               });
             }
           });

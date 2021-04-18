@@ -9,7 +9,7 @@ const router = express.Router();
 router.get('/', (req, res) => {
   res.render('addtool', {
     page_name: 'addtool',
-    libs: ['../addtool'],
+    libs: ['addtool-lib'],
   });
 });
 
