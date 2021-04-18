@@ -4,7 +4,7 @@ const toolRouter = require('./routes/tool');
 const addToolRouter = require('./routes/addtool');
 const editToolRouter = require('./routes/edittool');
 
-const base = '';
+const base = process.env.BASE_URL;
 
 module.exports = function (app) {
   app.use(`${base}/`, indexRouter);

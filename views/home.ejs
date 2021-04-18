@@ -87,7 +87,7 @@
            <% tool.tags.forEach(function(tag) { %>
              <%= tag.class %>
            <% }) %>
-          " type="button" onclick="location.href='tool/<%=tool._id%>';" data-content="
+          " type="button" onclick="location.href='<%=process.env.BASE_URL%>/tool/<%=tool._id%>';" data-content="
           <% tool.tags.forEach(function(tag) { %>
             <%= tag.text %>
           <% }) %>
