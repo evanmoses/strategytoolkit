@@ -9,6 +9,7 @@ require('dotenv').config();
 const app = express();
 
 app.use('/', express.static(path.join(__dirname, '/public')));
+app.use('/strategytoolkit', express.static(path.join(__dirname, '/public')));
 
 require('./router')(app);
 
