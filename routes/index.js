@@ -8,7 +8,7 @@ router.get('/', (req, res) => {
     if (!err) {
       res.render('home', {
         page_name: '',
-        libs: ['home-lib'],
+        libs: ['./public/js/home-lib'],
         tools,
       });
     }
